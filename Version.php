@@ -4,7 +4,7 @@
  * @link http://2amigos.us
  * @license http://www.opensource.org/licenses/bsd-license.php New BSD License
  */
-namespace extensions\packagist;
+namespace dosamigos\packagist;
 
 
 use yii\helpers\ArrayHelper;
@@ -15,7 +15,7 @@ use yii\helpers\ArrayHelper;
  * @author Antonio Ramirez <amigo.cobos@gmail.com>
  * @link http://www.ramirezcobos.com/
  * @link http://www.2amigos.us/
- * @package extensions\packagist
+ * @package dosamigos\packagist
  */
 class Version extends Object
 {
