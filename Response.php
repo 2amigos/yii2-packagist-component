@@ -9,7 +9,6 @@ namespace dosamigos\packagist;
 
 use yii\base\Component;
 use yii\helpers\ArrayHelper;
-use yii\helpers\Json;
 
 /**
  * Response will be filled with packagist api response information.
@@ -97,7 +96,7 @@ class Response extends Component
 	public function init()
 	{
 		if ($this->json !== null) {
-			$this->process(Json::decode($this->json));
+			$this->process($this->json);
 		}
 	}
 

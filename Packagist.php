@@ -129,7 +129,7 @@ class Packagist extends Component
 	/**
 	 * Makes a request to packagist api
 	 * @param $url
-	 * @return \Guzzle\Http\EntityBodyInterface|string
+	 * @return array the parses json string
 	 */
 	protected function request($url)
 	{
@@ -144,7 +144,7 @@ class Packagist extends Component
 			]);
 		}
 
-		return $response->getBody(true);
+		return $response->json();
 	}
 
 }

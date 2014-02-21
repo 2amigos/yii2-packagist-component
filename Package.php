@@ -6,6 +6,7 @@
  */
 namespace dosamigos\packagist;
 
+use Guzzle\Http\Client;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -74,5 +75,32 @@ class Package extends Result
 	public function getType()
 	{
 		return $this->type;
+	}
+
+	/**
+	 * @var array the readme information of the package
+	 */
+	private $_readme;
+
+	/**
+	 * Returns the readme information of the package
+	 * @param string|null $username if added, basic authentication login will be applied to increment the rate limit
+	 * @param string|null $password if added, basic authentication login will be applied to increment the rate limit
+	 * @return mixed
+	 */
+	public function getReadme($username = null, $password = null)
+	{
+		if($this->_readme == null && $this) {
+			$config = [];
+			if($username && $password) {
+				$config['request.options'] = array(
+					'auth' => [$username, $password, 'Basic']
+				);
+			}
+			$client = new Client(sprintf('https://api.github.com/repos/%s/readme', $this->name), $config);
+			$this->_readme = $client->get()->send()->json();
+		}
+
+		return $this->_readme;
 	}
 } 
