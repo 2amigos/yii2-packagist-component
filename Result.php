@@ -74,6 +74,6 @@ class Result extends Object
 	 */
 	public function getFavers()
 	{
-		return $this->faves;
+		return $this->favers;
 	}
 }
